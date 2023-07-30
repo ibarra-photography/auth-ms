@@ -1,0 +1,24 @@
+{
+  "name": "auth-ms",
+  "version": "1.0.0",
+  "description": "Authentification microservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibarra-photography/auth-ms.git"
+  },
+  "keywords": [
+    "microservice",
+    "ts",
+    "node"
+  ],
+  "author": "Aitor Ibarra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibarra-photography/auth-ms/issues"
+  },
+  "homepage": "https://github.com/ibarra-photography/auth-ms#readme"
+}
