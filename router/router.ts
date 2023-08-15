@@ -5,21 +5,13 @@ import { ValidateUserViewModel } from 'service/viewModels/validateUserViewModel'
 import { LoginVieModel } from 'service/viewModels/loginViewModel';
 import { insetUser } from '../service/dataBaseConnection/insertUser';
 
+import { registerUserController } from './controllers/registerUserController';
+
 export const router = Router();
 
 router.get('/', (req, res) => {
   res.status(200).json({ message: 'Authentication service is up' });
 });
-
-const registerUserController = async (req: Request, res: Response) => {
-  try {
-    const userViewModel: RegisterUserViewModel = req.body;
-    await insetUser(userViewModel)
-    res.status(202).json({ message: 'User added' });
-  } catch {
-    res.status(500).json({ message: 'Error adding user' });
-  }
-};
 
 const validateUserController = (req: Request, res: Response) => {
   try {
