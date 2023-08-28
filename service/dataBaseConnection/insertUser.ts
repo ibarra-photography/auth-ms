@@ -1,5 +1,5 @@
 import { registerUserMaper } from '../../application/mapers/registerUserMaper';
-import { RegisterUserViewModel } from 'service/viewModels/RegisterUserViewModel';
+import { RegisterUserViewModel } from '../../service/viewModels/registerUserViewModel';
 import { usersCollection, mongoClient, getPointer } from './mongoClient';
 
 export async function insetUser(userViewModel: RegisterUserViewModel) {

@@ -1,9 +1,7 @@
 import { Router, Request, Response } from 'express';
 
-import { RegisterUserViewModel } from '../service/viewModels/registerUserViewModel';
 import { ValidateUserViewModel } from 'service/viewModels/validateUserViewModel';
 import { LoginVieModel } from 'service/viewModels/loginViewModel';
-import { insetUser } from '../service/dataBaseConnection/insertUser';
 
 import { registerUserController } from './controllers/registerUserController';
 
