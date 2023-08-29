@@ -1,27 +1,16 @@
 import { Router, Request, Response } from 'express';
 
-import { LoginVieModel } from 'service/viewModels/loginViewModel';
 import { ValidateUserViewModel } from 'service/viewModels/validateUserViewModel';
 
 import { registerUserController } from './controllers/registerUserController';
 import { validateUserController } from './controllers/validateUserController';
+import { loginController } from './controllers/loginController';
 
 export const router = Router();
 
 router.get('/', (req, res) => {
   res.status(200).json({ message: 'Authentication service is up' });
 });
-
-
-const loginController = (req: Request, res: Response) => {
-  try {
-    const loginUser: LoginVieModel = req.body;
-    console.log(loginUser);
-    res.status(200).json({ token: '' });
-  } catch {
-    res.status(500).json({ message: 'Error on user login' });
-  }
-};
 
 const generateInvitationController = (req: Request, res: Response) => {
   const invitationRequest: ValidateUserViewModel = req.body;

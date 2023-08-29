@@ -1,5 +1,5 @@
 import { ValidateUserViewModel } from 'service/viewModels/validateUserViewModel';
-import {  Request, Response } from 'express';
+import { Request, Response } from 'express';
 
 export const validateUserController = (req: Request, res: Response) => {
   try {
