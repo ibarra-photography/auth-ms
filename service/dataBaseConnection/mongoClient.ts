@@ -2,7 +2,7 @@ import { MongoClient, MongoClientOptions , Db} from 'mongodb';
 
 const mongoClientOptions: MongoClientOptions = {};
 
-const uri = 'mongodb://aitor:aitor1234@localhost:27017/mydb';
+const uri = 'mongodb://aitor:aitor1234@localhost:27017';
 
 export const mongoClient: MongoClient = new MongoClient(uri, mongoClientOptions);
 
