@@ -8,7 +8,11 @@ export async function insetUser(userViewModel: RegisterUserViewModel) {
     const userPointer = getPointer(usersCollection);
     const user = registerUserMaper(userViewModel);
 
-    // TODO Check if username taken
+    const isUser = await userPointer.findOne({ username: user.username });
+    if (isUser) {
+      console.log(`User ${user.username} is taken!`);
+      throw new Error(`User name ${user.username} is taken!`);
+    }
     const dbResponse = await userPointer.insertOne(user);
     if (!dbResponse.acknowledged) throw new Error('Error on user  db');
   } catch (error: Error | unknown) {
