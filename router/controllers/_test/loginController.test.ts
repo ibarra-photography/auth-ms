@@ -1,8 +1,5 @@
-import {expect, describe, test, it} from 'vitest'
+import { expect, describe, test, it } from 'vitest';
 
-
-describe("Login controller", () => { 
-   it("should login", ()=> { 
-    }) 
-
-})
+describe('Login controller', () => {
+  it('should login', () => {});
+});

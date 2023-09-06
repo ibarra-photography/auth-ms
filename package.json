@@ -13,11 +13,13 @@
     "check-format": "prettier --ignore-path .gitignore --list-different \"**/*.+(js|json|ts|tsx|html)\"",
     "validate": "npm run lint && npm run check-format && npm run test -- --no-watch",
     "pre-push": "npm run format && npm run lint",
+    "pre-commit": "npm run format",
     "dev": "npx ts-node index.ts"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run pre-push"
+      "pre-push": "npm run pre-push",
+        "pre-commit": "npm run format" 
     }
   },
   "repository": {
