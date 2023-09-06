@@ -1,11 +1,14 @@
+import { ObjectId } from 'mongodb';
+
 export interface User {
-  username: string;
-  password: string;
-  email: string;
-  isValid: boolean;
-  registerDate: Date;
-  lastLogin: Date;
-  permissions: Permissions;
+  _id?: ObjectId;
+  username?: string;
+  password?: string;
+  email?: string;
+  isValid?: boolean;
+  registerDate?: Date;
+  lastLogin?: Date;
+  permissions?: Permissions;
 }
 
 interface Permissions {
