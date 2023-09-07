@@ -1,13 +1,15 @@
 import { Request, Response } from 'express';
 import { LoginViewModel } from '../../service/viewModels/loginViewModel';
 import { findUser } from '../../service/dataBaseConnection/findUser';
+import { textToHash } from '../../application/passwordEncriptation/textToHash';
 
 export const loginController = async (req: Request, res: Response) => {
   try {
     const loginUser: LoginViewModel = req.body;
 
     const userViewModel = await findUser(loginUser.username);
-    if (userViewModel!.password! !== loginUser.password) throw new Error('Invalid username or password');
+    const hashPassword = await textToHash(loginUser.password);
+    if (userViewModel!.password! !== hashPassword) throw new Error('Invalid username or password');
 
     res.status(200).json({ token: '', message: 'Success!' });
   } catch (error: Error | unknown) {
