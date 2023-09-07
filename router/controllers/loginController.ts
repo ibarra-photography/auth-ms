@@ -9,7 +9,7 @@ export const loginController = async (req: Request, res: Response) => {
     const userViewModel = await findUser(loginUser.username);
     if (userViewModel!.password! !== loginUser.password) throw new Error('Invalid username or password');
 
-    res.status(200).json({ token: '', message:"Success!" });
+    res.status(200).json({ token: '', message: 'Success!' });
   } catch (error: Error | unknown) {
     console.log(error);
     res.status(500).json({ message: error ? error : 'Error on login' });

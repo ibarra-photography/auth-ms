@@ -19,7 +19,7 @@
   "husky": {
     "hooks": {
       "pre-push": "npm run pre-push",
-        "pre-commit": "npm run format" 
+      "pre-commit": "npm run format"
     }
   },
   "repository": {
