@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
 import Token from './token';
-import { Jwt } from 'jsonwebtoken';
 
 describe('Token', () => {
   it('should generate token', () => {
