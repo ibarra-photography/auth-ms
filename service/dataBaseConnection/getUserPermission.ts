@@ -1,8 +1,8 @@
 import { Document, WithId } from 'mongodb';
-import { findUserMaper } from '../../application/mapers/findUserMapper';
 import { User } from '../../domain/user';
-import { LoginViewModel } from '../viewModels/loginViewModel';
 import { usersCollection, mongoClient, getPointer } from './mongoClient';
+import { userPermissionsMapper } from '../../application/mapers/userPermissionsMapper';
+import { UserPermissionsViewModel } from '../viewModels/userPermissionsViewModel';
 
 interface UserDocument extends Document, User {}
 
@@ -16,8 +16,9 @@ export async function getUserPermissions(username: string) {
     if (!userDocument) throw new Error('Invalid username or passwod');
     else if (userDocument) {
       user = { ...userDocument };
-      const userViewModel: LoginViewModel = findUserMaper(user);
-      return userViewModel;
+      const userPermissions: UserPermissionsViewModel = userPermissionsMapper(user);
+            
+      return userPermissions;
     }
   } catch (error: Error | unknown) {
     console.log(Error.toString());
