@@ -10,4 +10,14 @@ describe('User permissions checker', () => {
 
     expect(hasPermissions).toBe(true);
   });
+
+
+    it("should hava all parmissions", async () => { 
+    const usernmae = 'admin';
+    const permissions: Permissions[] = ['admin', "invite", "post"];
+
+    const hasPermissions = await userPermissionChecker(usernmae, permissions);
+
+    expect(hasPermissions).toBe(true);
+    })
 });
