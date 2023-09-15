@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { LoginViewModel } from '../../service/viewModels/loginViewModel';
 import { findUser } from '../../service/dataBaseConnection/findUser';
 import { textToHash } from '../../application/passwordEncriptation/textToHash';
-import Token from '../../domain/token/token'
+import Token from '../../domain/token/token';
 
 export const loginController = async (req: Request, res: Response) => {
   try {
@@ -14,7 +14,6 @@ export const loginController = async (req: Request, res: Response) => {
     const token = new Token();
     token.generateToken(loginUser.username);
     const tokenFromUser = token.getToken();
-    
 
     res.status(200).json({ token: tokenFromUser, message: 'Success!' });
   } catch (error: Error | unknown) {
