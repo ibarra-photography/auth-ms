@@ -17,7 +17,7 @@ export async function getUserPermissions(username: string) {
     else if (userDocument) {
       user = { ...userDocument };
       const userPermissions: UserPermissionsViewModel = userPermissionsMapper(user);
-            
+
       return userPermissions;
     }
   } catch (error: Error | unknown) {
