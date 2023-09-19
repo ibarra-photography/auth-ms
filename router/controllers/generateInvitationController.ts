@@ -15,8 +15,10 @@ export const generateInvitationController = async (req: Request, res: Response) 
 
     const permissions: UserPermissionsViewModel | undefined = await getUserPermissions(invitationRequest.username);
     if (!permissions || !permissions!.invite) {
+      console.log('permissions: ', permissions);
       console.log(`${invitationRequest.username} has no permission`);
       res.status(403).json({ message: 'Forbiden' });
+      return;
     }
 
     const invitation = invitaionGenerator();
