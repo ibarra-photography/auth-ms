@@ -1,7 +1,6 @@
 import { Router, Request, Response } from 'express';
 
 import { registerUserController } from './controllers/registerUserController';
-import { validateUserController } from './controllers/validateUserController';
 import { loginController } from './controllers/loginController';
 import { generateInvitationController } from './controllers/generateInvitationController';
 
@@ -14,7 +13,6 @@ router.get('/', (req: Request, res: Response) => {
 router.post('/generateInvitation', generateInvitationController);
 router.post('/registerUser', registerUserController);
 router.post('/login', loginController);
-router.post('/validateUser', validateUserController);
 
 router.get('*', (req, res) => {
   res.status(404).json({ message: 'Endpoint not found in authentication router! ' });
