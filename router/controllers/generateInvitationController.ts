@@ -5,6 +5,8 @@ import { userValidationService } from '../../service/validation/userValidationSe
 import { getUserPermissions } from '../../service/dataBaseConnection/getUserPermission';
 import { UserPermissionsViewModel } from '../../service/viewModels/userPermissionsViewModel';
 import { invitaionGenerator } from '../../application/utils/invitationGenerator';
+import { insertInvitation } from '../../service/dataBaseConnection/insertInvitation';
+import { InvitationViewModel } from '../../service/viewModels/invitationViewModel';
 
 export const generateInvitationController = async (req: Request, res: Response) => {
   try {
@@ -22,6 +24,8 @@ export const generateInvitationController = async (req: Request, res: Response) 
     }
 
     const invitation = invitaionGenerator();
+    const invitationToInsert: InvitationViewModel = { username: invitationRequest.username, invitation: invitation.toString()}
+    await insertInvitation(invitationToInsert)
 
     res.status(202).json({ message: 'Invitation generated!', invitation });
   } catch {
