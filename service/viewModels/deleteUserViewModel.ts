@@ -1,5 +1,5 @@
-import { ValidateUserViewModel } from './validateUserViewModel';
-
-export interface DeleteUserViewModel extends ValidateUserViewModel {
+export interface DeleteUserViewModel {
   usernameToDelete: string;
+  username: string;
+  token: string;
 }
