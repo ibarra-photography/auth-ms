@@ -9,9 +9,9 @@ export async function deleteUser(username: string) {
     await mongoClient.connect();
     const userPointer = getPointer(usersCollection);
 
-        console.log(username)
+    console.log(username);
     const userDocument: WithId<UserDocument> | null = await userPointer.findOne({ username: username });
-        console.log(userDocument)
+    console.log(userDocument);
     if (!userDocument) throw new Error('Invalid username');
     else if (userDocument) {
       await userPointer.deleteOne({ _id: userDocument._id });
