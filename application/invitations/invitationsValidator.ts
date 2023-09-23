@@ -5,5 +5,5 @@ export async function invitationsValidator(invitationToValidate: string) {
 
   if (!invitation?.isValid) return false;
 
-  return false;
+  return true;
 }
