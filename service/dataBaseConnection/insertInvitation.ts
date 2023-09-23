@@ -1,8 +1,8 @@
 import { Invitations } from '../../domain/invitations';
 import { InvitationViewModel } from '../viewModels/invitationViewModel';
-import {  mongoClient, getPointer, invitationsCollection } from './mongoClient';
+import { mongoClient, getPointer, invitationsCollection } from './mongoClient';
 
-export async function insertInvitation(invitation: InvitationViewModel ) {
+export async function insertInvitation(invitation: InvitationViewModel) {
   try {
     await mongoClient.connect();
     const invitationsPointer = getPointer(invitationsCollection);
@@ -13,14 +13,13 @@ export async function insertInvitation(invitation: InvitationViewModel ) {
       throw new Error(`User name ${invitation.invitation} exist!`);
     }
 
-    const invitationToInsert: Invitations = { 
-    invitationCode: invitation.invitation,
-            isValid:true,
-            generationDate:new Date(),
-            generatorsUser: invitation.username,
-            usageDate:undefined
-            
-    }
+    const invitationToInsert: Invitations = {
+      invitationCode: invitation.invitation,
+      isValid: true,
+      generationDate: new Date(),
+      generatorsUser: invitation.username,
+      usageDate: undefined
+    };
     const dbResponse = await invitationsPointer.insertOne(invitationToInsert);
     if (!dbResponse.acknowledged) throw new Error('Error on user  db');
   } catch (error: Error | unknown) {
