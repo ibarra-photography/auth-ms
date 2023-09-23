@@ -8,4 +8,10 @@ describe('Invitation Validator', () => {
 
     expect(isValid).toBe(false);
   });
+
+  it('It should return valid for invitation 575087', async () => {
+    const isValid = await invitationsValidator('575087');
+
+    expect(isValid).toBe(true);
+  });
 });
