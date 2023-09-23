@@ -1,5 +1,4 @@
-export interface InvitationViewModel { 
-    username: string;
-    invitation: string
-
+export interface InvitationViewModel {
+  username: string;
+  invitation: string;
 }
