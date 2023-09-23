@@ -10,7 +10,7 @@ export async function markInvitationAsUsed(invitationNumber: string) {
     const invitationDocument = await userPointer.findOne({ invitationCode: invitationNumber });
     if (!invitationDocument) throw new Error('Invalid username or passwod');
     else if (invitationDocument) {
-      await userPointer.updateOne({ _id: invitationDocument._id }, { $set: { isValid: false } as Partial<Invitations> });
+      await userPointer.updateOne({ _id: invitationDocument._id }, { $set: { isValid: false, usageDate: new Date() } as Partial<Invitations> });
       console.log(`Invitation used`);
     }
   } catch (error: Error | unknown) {

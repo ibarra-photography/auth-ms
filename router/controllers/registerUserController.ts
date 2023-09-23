@@ -19,7 +19,7 @@ export const registerUserController = async (req: Request, res: Response) => {
     await markInvitationAsUsed(userViewModel.invitation);
     res.status(202).json({ message: 'User added' });
   } catch (error: Error | unknown) {
-    // restore user and invitation
+    // restore and invitation
     console.warn(Error.name);
     res.status(500).json({ message: 'Error adding user' });
   }
