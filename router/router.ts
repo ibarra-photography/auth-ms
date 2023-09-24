@@ -15,6 +15,7 @@ router.post('/generateInvitation', generateInvitationController);
 router.post('/registerUser', registerUserController);
 router.post('/login', loginController);
 router.post('/deleteUser', deleteUserController);
+router.post('/userPermission', () => {});
 
 router.get('*', (req, res) => {
   res.status(404).json({ message: 'Endpoint not found in authentication router! ' });
