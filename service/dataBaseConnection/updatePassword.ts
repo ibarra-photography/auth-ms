@@ -1,26 +1,26 @@
 import { usersCollection, mongoClient, getPointer } from './mongoClient';
 
-import { Invitations } from '../../domain/invitations';
+import { User } from '../../domain/user';
 
-interface  UpdatePasswordModel { 
-username:string,
-    password:string
+export interface UpdatePasswordModel {
+  username: string;
+  password: string;
 }
 
-export async function markInvitationAsUsed(updatePasswordModel: UpdatePasswordModel) {
+export async function updatePassword(updatePasswordModel: UpdatePasswordModel) {
   try {
     await mongoClient.connect();
     const userPointer = getPointer(usersCollection);
 
     const user = await userPointer.findOne({ username: updatePasswordModel.username });
-    if (!invitationDocument) throw new Error('Invalid username or passwod');
-    else if (invitationDocument) {
-      await userPointer.updateOne({ _id: invitationDocument._id }, { $set: { isValid: false, usageDate: new Date() } as Partial<Invitations> });
+    if (!user) throw new Error('Invalid username or passwod');
+    else if (user) {
+      await userPointer.updateOne({ _id: user._id }, { $set: { password: updatePasswordModel.password } as Partial<User> });
       console.log(`Invitation used`);
     }
   } catch (error: Error | unknown) {
     console.warn('Error: ', Error.toString());
-    throw new Error('Error on invitation upadte');
+    throw new Error('Erro updating password');
   } finally {
     setTimeout(async () => {
       await mongoClient.close();
