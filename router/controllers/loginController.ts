@@ -10,7 +10,12 @@ export const loginController = async (req: Request, res: Response) => {
 
     const userViewModel = await findUser(loginUser.username);
     const hashPassword = await textToHash(loginUser.password);
-    if (userViewModel!.password! !== hashPassword) throw new Error('Invalid username or password');
+    if (userViewModel!.password! !== hashPassword) {
+      console.log('Invalid password');
+      res.status(403).json({ message: 'Invalid username or password' });
+      return;
+    }
+
     const token = new Token();
     token.generateToken(loginUser.username);
     const tokenFromUser = token.getToken();
