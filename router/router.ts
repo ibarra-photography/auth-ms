@@ -4,6 +4,7 @@ import { registerUserController } from './controllers/registerUserController';
 import { loginController } from './controllers/loginController';
 import { generateInvitationController } from './controllers/generateInvitationController';
 import { deleteUserController } from './controllers/deleteUserController';
+import { changePasswordController } from './controllers/changePasswordController';
 import { userPermissionsController } from './controllers/userPermissionsController';
 
 export const router = Router();
@@ -17,6 +18,7 @@ router.post('/registerUser', registerUserController);
 router.post('/login', loginController);
 router.post('/deleteUser', deleteUserController);
 router.post('/userPermission', userPermissionsController);
+router.post('/changePassword', changePasswordController);
 
 router.get('*', (req, res) => {
   res.status(404).json({ message: 'Endpoint not found in authentication router! ' });
